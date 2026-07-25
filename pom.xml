@@ -30,6 +30,7 @@
 	<properties>
 		<java.version>11</java.version>
 		<lombok.version>1.18.30</lombok.version>
+		<sonar.organization>leonelfabianbahamonsoto</sonar.organization>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -149,6 +150,11 @@
 						</goals>
 					</execution>
 				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.sonarsource.scanner.maven</groupId>
+				<artifactId>sonar-maven-plugin</artifactId>
+				<version>4.0.0.4121</version>
 			</plugin>
 		</plugins>
 	</build>
