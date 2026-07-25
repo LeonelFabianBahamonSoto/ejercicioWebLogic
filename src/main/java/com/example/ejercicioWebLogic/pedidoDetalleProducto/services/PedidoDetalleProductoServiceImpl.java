@@ -1,8 +1,12 @@
 package com.example.ejercicioWebLogic.pedidoDetalleProducto.services;
 
 import java.math.BigDecimal;
+import java.util.List;
 
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.example.ejercicioWebLogic.entities.Pedido;
 import com.example.ejercicioWebLogic.pedidoDetalleProducto.PedidoDetalleProducto;
@@ -22,6 +26,7 @@ public class PedidoDetalleProductoServiceImpl implements PedidoDetalleProductoSe
     }
 
     @Override
+    @Transactional(readOnly = false, propagation = Propagation.REQUIRED, rollbackFor = { RuntimeException.class, DataIntegrityViolationException.class })
     public PedidoDetalleProductoDto crearPedidoDetalleProductoByPedidos(
             Integer cantidad, BigDecimal precioUnitario, Pedido pedido, Producto producto) throws Exception {
 
@@ -42,6 +47,14 @@ public class PedidoDetalleProductoServiceImpl implements PedidoDetalleProductoSe
                 .build();
 
         return pedidoDetalleProductoDto;
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public List<PedidoDetalleProducto> obtenerAllPedidosDetalleProducto() throws Exception {
+        List<PedidoDetalleProducto> allPedidoDetalleProducto = this.pedidoDetalleProductoRepository.findAll();
+
+        return allPedidoDetalleProducto;
     }
 
 }
