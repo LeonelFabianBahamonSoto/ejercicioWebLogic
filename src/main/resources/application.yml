@@ -7,8 +7,8 @@ spring:
     application:
         name: ejercicioWebLogic
     datasource:
-        # url: jdbc:oracle:thin:@localhost:1521/FREEPDB1
-        url: jdbc:oracle:thin:@host.docker.internal:1521/FREEPDB1
+        url: jdbc:oracle:thin:@localhost:1521/FREEPDB1
+        # url: jdbc:oracle:thin:@host.docker.internal:1521/FREEPDB1
         username: appuser
         password: appuser123
         driver-class-name: oracle.jdbc.OracleDriver

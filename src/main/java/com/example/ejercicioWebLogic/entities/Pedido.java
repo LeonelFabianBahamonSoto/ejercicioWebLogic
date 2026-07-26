@@ -12,6 +12,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.example.ejercicioWebLogic.estadoPedido.EstadoPedido;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import lombok.AllArgsConstructor;
@@ -37,8 +38,9 @@ public class Pedido {
     @Column(name = "fecha_pedido")
     private LocalDate fechaPedido;
 
-    @Column(name = "estado")
-    private String estadoPedido;
+    @JoinColumn(name = "id_estado", referencedColumnName = "id_estado", nullable = false)
+    @ManyToOne(fetch = FetchType.LAZY)
+    private EstadoPedido estadoPedido;
 
     @JoinColumn(name = "id_cliente", referencedColumnName = "id_cliente", nullable = false)
     @ManyToOne(fetch = FetchType.LAZY)

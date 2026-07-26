@@ -9,7 +9,6 @@ import com.example.ejercicioWebLogic.entities.Clientes;
 import com.example.ejercicioWebLogic.repositories.ClienteRepository;
 import com.example.ejercicioWebLogic.services.ClienteService;
 
-@Transactional
 @Service
 public class ClienteServiceImpl implements ClienteService {
 

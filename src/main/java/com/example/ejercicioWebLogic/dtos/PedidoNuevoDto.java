@@ -19,6 +19,8 @@ public class PedidoNuevoDto {
 
     private BigDecimal precioUnitario;
 
+    private Integer estadoPedidoId;
+
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
     private LocalDate fechaPedido;
 }
