@@ -22,6 +22,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import com.example.ejercicioWebLogic.entities.Clientes;
 import com.example.ejercicioWebLogic.entities.Pedido;
+import com.example.ejercicioWebLogic.estadoPedido.EstadoPedido;
 import com.example.ejercicioWebLogic.pedidoDetalleProducto.PedidoDetalleProducto;
 import com.example.ejercicioWebLogic.pedidoDetalleProducto.dtos.PedidoDetalleProductoDto;
 import com.example.ejercicioWebLogic.pedidoDetalleProducto.repositories.PedidoDetalleProductoRepository;
@@ -39,6 +40,7 @@ public class PedidoDetalleProductoServiceImplTest {
     private Pedido pedidoEntityTest;
     private Producto productoEntityTest;
     private PedidoDetalleProducto pedidoDetalleProductoEntityTest;
+    private EstadoPedido estadoPedidoEntityTest;
     private List<PedidoDetalleProducto> pedidoDetalleProductoList = new ArrayList<PedidoDetalleProducto>();;
 
     private Integer cantidadTest = 1;
@@ -50,6 +52,7 @@ public class PedidoDetalleProductoServiceImplTest {
         pedidoDetalleProductoEntityTest = crearPedidoDetalleProducto();
         pedidoEntityTest = crearPedido();
         productoEntityTest = crearProducto();
+        estadoPedidoEntityTest = crearEstadoPedido();
 
         this.pedidoDetalleProductoList.add(pedidoDetalleProductoEntityTest);
     }
@@ -107,7 +110,7 @@ public class PedidoDetalleProductoServiceImplTest {
         Pedido nuevoPedido = Pedido.builder()
             .pedidoId(Long.valueOf(1))
             .fechaPedido(LocalDate.of(2017, 1, 1))
-            .estadoPedido("Pendiente")
+            .estadoPedido(estadoPedidoEntityTest)
             .cliente(this.crearCliente())
             .build();
 
@@ -137,4 +140,12 @@ public class PedidoDetalleProductoServiceImplTest {
         return pedidoDetalleProducto;
     }
 
+    private EstadoPedido crearEstadoPedido() {
+        EstadoPedido estadoPedido = EstadoPedido.builder()
+            .estadoId(1)
+            .nombreEstado("PENDIENTE")
+            .build();
+
+        return estadoPedido;
+    }
 }
